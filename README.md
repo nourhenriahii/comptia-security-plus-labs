@@ -118,7 +118,7 @@ ping 192.168.x.x
 ```
 
 **Screenshot Evidence:**
-![Kali to Windows Ping](./screenshots/ip.png)
+![Kali to Windows Ping](./screenshots/pingip.png)
 
 **Analysis:**
 - ✅ Successfully pinged host with **0% packet loss**
