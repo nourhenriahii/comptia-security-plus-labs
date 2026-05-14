@@ -22,7 +22,9 @@
 ## 🎯 Task 1: Kali Linux Installation & Updates
 
 **Screenshot Evidence:**
-![Kali Update Process](./screenshots/1.png)
+![Kali Update Process](./screenshots/Kali_Update_Process.png)
+
+
 
 **Summary:** Successfully completed full Kali Linux installation on UTM with system updates.
 
@@ -39,6 +41,7 @@ ping 8.8.8.8
 
 **Screenshot:**
 ![Ping 8.8.8.8](./screenshots/ping_8_8_8_8.png)
+
 
 **Answers:**
 
@@ -61,6 +64,7 @@ traceroute 8.8.8.8
 
 **Screenshot:**
 ![Traceroute Results](./screenshots/traceroot.png)
+
 
 **Answers:**
 
@@ -103,7 +107,7 @@ ip addr show
 ### Windows Host IP Address
 
 **Details:**
-- **IP Address:** `192.168.x.x`
+- **IP Address:** `192.168.x.x` 
 - **Interface:** Ethernet
 
 ### Ping Test Results
@@ -189,7 +193,7 @@ ping 192.168.x.x
 
 **Port:** 80 (default HTTP)
 
-**Explanation:**
+**Explanation:** 
 - `127.0.0.1` is the **loopback address** (refers to the machine itself)
 - Only accessible from the local machine by default
 - Used for development/testing purposes
@@ -287,7 +291,7 @@ nmap -sV 192.168.x.x
 | **Apache version?** | Apache 2.4.x (specific version shown by -sV flag) |
 | **MySQL version?** | MySQL 5.7.x or later (depends on XAMPP version) |
 
-**Security Insight:**
+**Security Insight:** 
 - Port 80 should be restricted to authorized networks in production
 - Port 3306 (MySQL) should NOT be exposed to untrusted networks
 - Consider using VPN/firewall rules to limit access
@@ -320,17 +324,19 @@ nmap -sV 192.168.x.x
 ## 📂 Repository Structure
 
 ```
-checkpoint1-networking/
-├── README.md (this file)
-└── screenshots/
-    ├── 1.png
-    ├── ping_8_8_8_8.png
-    ├── traceroot.png
-    ├── ping_ip.png
-    ├── xampp_site.png
-    ├── connect_apache.png
-    ├── file_modifie.png
-    └── http.png
+comptia-security-plus-labs/
+└── 01-network-recon/
+    ├── README.md (this file)
+    └── screenshots/
+        ├── Kali update
+        ├── ping 8.8.8.8.png
+        ├── Traceroute to 8.8.8.8.png
+        ├── VM-HostIP.png
+        ├── XAMPP Installation.png
+        ├── Modifying index.html.png
+        ├── Browser Verification.png
+        ├── Accessing XAMPP from Kali Linux.png
+       
 ```
 
 ---
@@ -345,22 +351,21 @@ checkpoint1-networking/
 - [x] XAMPP installed and running
 - [x] index.html modified with name
 - [x] Cross-VM web access working
-- [x] nmap scan completed and documented
+- [ ] nmap scan completed and documented
 
 ---
 
 ## 🎯 Next Steps
-
+ 
 → Proceed to **Checkpoint 2: Web Application Protection, Encryption & Steganography**
-
+ 
 Tasks include:
 - Security controls implementation (managerial, operational, technical, physical)
 - CIA Triad practical application
 - AES encryption with CyberChef
 - Steganography with Steghide
 - Cisco Packet Tracer DMZ configuration
-
 ---
 
-**Created:** 2026-05-14
-**Status:** ✅ Complete
+ 
+**Status:** 95% Complete (awaiting nmap detailed output)
