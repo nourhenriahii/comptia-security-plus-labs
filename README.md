@@ -118,7 +118,7 @@ ping 192.168.x.x
 ```
 
 **Screenshot Evidence:**
-![Kali to Windows Ping](./screenshots/Ip.png)
+![Kali to Windows Ping](./screenshots/ip.png)
 
 **Analysis:**
 - ✅ Successfully pinged host with **0% packet loss**
@@ -173,8 +173,6 @@ ping 192.168.x.x
 
 ## 🌐 Task 5 & 6: XAMPP Installation & Web Server Access
 
-**Evidence:**
-![XAMPP Welcome Page](./screenshots/xampp.png)
 
 **Installation Details:**
 - ✅ Apache Web Server: **Running**
@@ -216,7 +214,7 @@ sudo nano /Applications/XAMPP/xamppfiles/htdocs/index.html
 ```
 
 **Browser Verification:**
-![Modified Page Display](./xampp/http.png)
+![Modified Page Display](./screenshots/connect.png)
 
 **Result:** ✅ Name successfully displayed on web server
 
