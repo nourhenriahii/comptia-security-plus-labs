@@ -22,7 +22,7 @@
 ## 🎯 Task 1: Kali Linux Installation & Updates
 
 **Screenshot Evidence:**
-![Kali Update Process](./screenshots/Kali_Update_Process.png)
+![Kali Update Process](./screenshots/Update.png)
 
 
 
@@ -40,7 +40,7 @@ ping 8.8.8.8
 ```
 
 **Screenshot:**
-![Ping 8.8.8.8](./screenshots/ping_8_8_8_8.png)
+![Ping 8.8.8.8](./screenshots/ping.png)
 
 
 **Answers:**
@@ -118,7 +118,7 @@ ping 192.168.x.x
 ```
 
 **Screenshot Evidence:**
-![Kali to Windows Ping](./screenshots/ping_ip.png)
+![Kali to Windows Ping](./screenshots/Ip.png)
 
 **Analysis:**
 - ✅ Successfully pinged host with **0% packet loss**
@@ -174,7 +174,7 @@ ping 192.168.x.x
 ## 🌐 Task 5 & 6: XAMPP Installation & Web Server Access
 
 **Evidence:**
-![XAMPP Welcome Page](./screenshots/xampp_site.png)
+![XAMPP Welcome Page](./screenshots/xampp.png)
 
 **Installation Details:**
 - ✅ Apache Web Server: **Running**
@@ -183,7 +183,7 @@ ping 192.168.x.x
 - ✅ ProFTPD: **Running**
 
 **Server Status:**
-![Server Management](./screenshots/connect_apache.png)
+![Server Management](./screenshots/connect.png)
 
 ### Local Web Server Access
 
@@ -208,7 +208,7 @@ sudo nano /Applications/XAMPP/xamppfiles/htdocs/index.html
 ```
 
 **File Edited:**
-![HTML File Modification](./screenshots/file_modifie.png)
+![HTML File Modification](./screenshots/Modifyingindex.png)
 
 **Change Made:**
 ```html
@@ -216,7 +216,7 @@ sudo nano /Applications/XAMPP/xamppfiles/htdocs/index.html
 ```
 
 **Browser Verification:**
-![Modified Page Display](./screenshots/http.png)
+![Modified Page Display](./xampp/http.png)
 
 **Result:** ✅ Name successfully displayed on web server
 
