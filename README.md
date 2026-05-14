@@ -118,7 +118,8 @@ ping 192.168.x.x
 ```
 
 **Screenshot Evidence:**
-![Kali to Windows Ping](./screenshots/pingip.png)
+![Kali to Mac Ping]<img width="715" height="340" alt="pingip" src="https://github.com/user-attachments/assets/0e52242a-5a85-4571-9c21-38226ddf3640" />
+
 
 **Analysis:**
 - ✅ Successfully pinged host with **0% packet loss**
