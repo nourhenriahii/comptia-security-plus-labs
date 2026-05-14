@@ -214,7 +214,7 @@ sudo nano /Applications/XAMPP/xamppfiles/htdocs/index.html
 ```
 
 **Browser Verification:**
-![Modified Page Display](./screenshots/xampp_site.png)
+![Modified Page Display](./screenshots/xampp.png)
 
 **Result:** ✅ Name successfully displayed on web server
 
