@@ -364,7 +364,4 @@ Tasks include:
 - AES encryption with CyberChef
 - Steganography with Steghide
 - Cisco Packet Tracer DMZ configuration
----
 
- 
-**Status:** 95% Complete (awaiting nmap detailed output)
