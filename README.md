@@ -15,7 +15,7 @@ Topics covered:
 - Apache/XAMPP web service setup
 
 📂 Open Checkpoint 1:
-[Checkpoint 1 - Networking Fundamentals](checkpoint-1-networking/README.md)
+[Checkpoint 1 - Networking Fundamentals](checkpoint-1-networking/CHECKPOINT_1_README.md)
 
 ---
 
