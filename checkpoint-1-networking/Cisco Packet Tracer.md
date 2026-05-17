@@ -665,7 +665,7 @@ Laptop1                                             Laptop3
 
 ### **Screenshot: t17 - Extended Network Topology**
 
-![Extended Topology with 2 Routers and 2 Networks](t17.PNG)
+![Extended Topology with 2 Routers and 2 Networks](./screenshots/t17.PNG)
 
 **Visible Elements:**
 - Laptop1 (internal network)
@@ -697,7 +697,7 @@ SWRouter# copy run start
 
 ### **Screenshot: t17_1 - SWRouter Fa0/1 Configuration**
 
-![Router CLI - Configure Second Interface](t17+1.PNG)
+![Router CLI - Configure Second Interface](./screenshots/t17+1.PNG)
 
 **Output Shows:**
 ```
