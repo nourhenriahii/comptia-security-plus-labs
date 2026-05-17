@@ -39,7 +39,10 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 
 **Tools:** Kali Linux, VirtualBox, nmap, XAMPP, Cisco Packet Tracer, Terminal
 
-📂 **[Open Checkpoint 1 →](checkpoint-1-networking/CHECKPOINT_1_README.md)**
+📂 **[Open Checkpoint 1 →](checkpoint-1-networking/CHECKPOINT_1_README.md)
+🔧 ** [Cisco Packet Tracer](./01-networking-fundamentals/Cisco%20Packet%20Tracer.md) 
+🛠️ ** [Network Tools Reference](./01-networking-fundamentals/Network%20Reconnaissance%20%26%20Security%20Tools.md)
+📸 ** [Screenshots Folder](./01-networking-fundamentals/screenshots/) 
 
 ---
 
