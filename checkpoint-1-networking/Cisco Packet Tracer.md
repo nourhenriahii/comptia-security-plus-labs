@@ -110,9 +110,7 @@ Used Place Note tool to add labels:
 - **Laptop:** "PC-LAP"
 - Added IP address notes near devices
 
-### **Screenshot: t7 - Device Labeling**
-
-![Labels Visible on All Devices](./screenshots/t7.PNG)
+### ** t7 - Device Labeling**
 
 **Expected Visual:**
 - Clear text labels on/near each device
@@ -519,9 +517,8 @@ Same physical link + Different logical subnets = NO CONNECTIVITY
 | 255.255.255.240 | /28 | 0-15 | 150.170.2 ✅ | 150.170.8 ✅ | YES | ✅ Works |
 | 255.255.255.248 | /29 | A:0-7, B:8-15 | 150.170.2 ✅ | 150.170.8 ❌ | NO | ❌ Fails |
 
-### **Screenshot: t14 - Analysis Documentation**
+### **t14 - Analysis Documentation**
 
-![Documentation - Subnet Mask Comparison Table](./screenshots/t14.PNG)
 
 **Expected Visual:**
 - Table comparing three subnet masks
