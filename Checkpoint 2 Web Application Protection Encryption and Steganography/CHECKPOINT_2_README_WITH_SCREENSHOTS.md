@@ -1,829 +1,237 @@
-# 🔐 Checkpoint 2: Web Application Protection, Encryption, and Steganography
+# 🔐 Checkpoint 2: Web Application Protection, Encryption & Steganography
 
-**CompTIA Security+ Checkpoint 2 - Complete Lab Documentation**
-
-**Student:** Nourhen Riahi  
-**Date:** May 19, 2026  
-**Status:** ✅ Complete  
-**Difficulty:** Intermediate
+> **CompTIA Security+ Lab** | Kali Linux VM + Windows Host (XAMPP)  
+> **Student:** Nour Henriahi
 
 ---
 
-## 📌 Objective
+## 📋 Table of Contents
 
-Apply fundamental cybersecurity concepts (CIA triad, access control, encryption, and steganography) in a practical environment using Kali Linux VM and Windows XAMPP web server.
-
----
-
-## 📚 Table of Contents
-
-1. [Security Controls Framework](#1-security-controls-framework)
-2. [CIA Triad & AAA Framework](#2-cia-triad--aaa-framework)
-3. [Encryption Types](#3-encryption-types-symmetric-vs-asymmetric)
-4. [Practical Implementation](#4-practical-implementation-with-screenshots)
-5. [Screenshots & Evidence](#5-screenshots--evidence)
-6. [Learning Outcomes](#6-learning-outcomes)
+1. [Securing a Web Application – Access Control Strategies](#1-securing-a-web-application--access-control-strategies)
+2. [Security Principles – CIA Triad and AAA](#2-security-principles--cia-triad-and-aaa)
+3. [Data Confidentiality – Encryption Types](#3-data-confidentiality--encryption-types)
+4. [Practical Encryption with CyberChef (AES)](#4-practical-encryption-with-cyberchef-aes)
+5. [What is Steganography?](#5-what-is-steganography)
+6. [Hide a Secret Using Steghide (Kali Linux)](#6-hide-a-secret-using-steghide-kali-linux)
+7. [Serve the Steganographic Image via XAMPP](#7-serve-the-steganographic-image-via-xampp)
 
 ---
 
-# 1. SECURITY CONTROLS FRAMEWORK
+## 1. Securing a Web Application – Access Control Strategies
 
-## Objective
-Outline security controls for protecting a web application hosted in an on-premises server room.
+Imagine your web application is hosted in an on-premises server room. The following security controls are applied across four categories:
 
----
-
-## Security Controls Matrix
-
-### **A. MANAGERIAL CONTROLS**
-
-#### Preventive Controls
-```
-Policy: "All web applications must use HTTPS encryption"
-├─ Ensures confidentiality of data in transit
-├─ Prevents man-in-the-middle attacks
-└─ Compliance requirement for data protection
-```
-
-#### Detective Controls
-```
-Access Review: "Quarterly review of admin access permissions"
-├─ Identifies unauthorized access patterns
-├─ Detects privilege creep
-└─ Maintains audit trail
-```
-
-#### Corrective Controls
-```
-Incident Response Plan: "5-step breach response procedure"
-├─ Containment within 1 hour
-├─ Investigation within 24 hours
-└─ Notification within 72 hours
-```
+| Control Type | Example | Classification | Purpose |
+|---|---|---|---|
+| **Managerial** | Security Policy Documentation | Preventive | Defines acceptable use, password standards, and incident response |
+| **Managerial** | Risk Assessment Reviews | Detective | Periodic evaluation of threats and vulnerabilities |
+| **Operational** | Security Awareness Training | Preventive | Staff training on phishing and social engineering |
+| **Operational** | Log Review & Monitoring | Detective | Daily review of system logs for anomalies |
+| **Operational** | Incident Response Plan | Corrective | Procedures for containing and recovering from incidents |
+| **Technical** | Firewall & WAF Rules | Preventive | Blocks unauthorized traffic and common web attacks |
+| **Technical** | Intrusion Detection System (IDS) | Detective | Monitors traffic and alerts on suspicious patterns |
+| **Technical** | Patch Management | Corrective | Automated patching to restore a secure state |
+| **Physical** | Keycard / Biometric Door Access | Preventive | Only authorized personnel can enter the server room |
+| **Physical** | CCTV Surveillance Cameras | Detective | Continuous recording to identify unauthorized access |
 
 ---
 
-### **B. OPERATIONAL CONTROLS**
+## 2. Security Principles – CIA Triad and AAA
 
-#### Preventive Controls
-```
-User Training: "Annual security awareness program"
-├─ Educates staff on phishing and social engineering
-├─ Reduces human error incidents by 40%
-└─ Creates security culture
-```
+### 🔺 CIA Triad
 
-#### Detective Controls
-```
-Configuration Audits: "Monthly review of server configurations"
-├─ Identifies misconfigurations
-├─ Detects unauthorized changes
-└─ Ensures compliance with security baselines
-```
+| Principle | Definition | Real-World Example |
+|---|---|---|
+| **Confidentiality** | Ensures data is accessible only to authorized parties | A hospital uses AES-256 encryption on patient records with role-based access control |
+| **Integrity** | Guarantees data accuracy and prevents unauthorized modification | A bank uses SHA-256 hashing to verify wire transfer amounts have not been altered in transit |
+| **Availability** | Ensures systems are accessible to authorized users when needed | An e-commerce platform uses load balancers and redundant servers to stay online during high traffic |
 
-#### Corrective Controls
-```
-Patch Management: "Monthly security patch deployment"
-├─ Fixes known vulnerabilities
-├─ Tested before production deployment
-└─ Minimizes exploitation window
-```
+### 🔑 AAA Framework
+
+- **Authentication** – Verifies the identity of a user or device.  
+  _Example: Logging in with username + password + OTP (MFA) to access a VPN._
+
+- **Authorization** – Determines what an authenticated user is allowed to do.  
+  _Example: An employee can read files in their department folder but cannot access HR or Finance directories._
+
+- **Accounting** – Tracks and logs all actions performed by authenticated users.  
+  _Example: A SIEM records every login, file access, and configuration change with timestamps._
 
 ---
 
-### **C. TECHNICAL CONTROLS**
+## 3. Data Confidentiality – Encryption Types
 
-#### Preventive Controls
-```
-Firewall Rules: "Allow only ports 80 (HTTP) and 443 (HTTPS)"
-├─ Blocks unauthorized network access
-├─ Prevents reconnaissance attacks
-└─ Reduces attack surface
+| Aspect | Symmetric Encryption | Asymmetric Encryption |
+|---|---|---|
+| **Key Model** | Single shared secret key for both encryption and decryption | Key pair: Public key encrypts, Private key decrypts |
+| **Key Management** | Key must be securely shared in advance (key exchange problem) | Public key is freely distributed; private key is never shared |
+| **Algorithm Example** | **AES** (Advanced Encryption Standard) | **RSA** (Rivest-Shamir-Adleman) |
+| **Speed** | Much faster — suited for large data volumes | Slower — computationally expensive |
+| **Typical Use** | File encryption, VPN tunnels, full-disk encryption (BitLocker) | SSL/TLS handshake, email (PGP), digital signatures |
+| **Security Risk** | Compromise of the single key exposes all data | Only the private key must remain secret |
 
-Web Application Firewall (WAF): "Block SQL injection attempts"
-├─ Inspects HTTP traffic for malicious patterns
-├─ Prevents application-layer attacks
-└─ Protects database from unauthorized queries
-
-Encryption: "AES-256 for data at rest, TLS 1.3 for data in transit"
-├─ Protects confidentiality
-├─ Prevents eavesdropping
-└─ Meets regulatory requirements
-
-Access Control: "Role-based access control (RBAC)"
-├─ Admin: Full system access
-├─ Editor: Create/modify content
-├─ Viewer: Read-only access
-└─ Guest: Limited access
-```
-
-#### Detective Controls
-```
-Logging & Monitoring: "All access attempts logged with timestamp, user, action"
-├─ Enables forensic analysis
-├─ Detects suspicious patterns
-└─ Provides accountability
-
-Intrusion Detection System (IDS): "Alert on port scans, failed login attempts"
-├─ Real-time threat detection
-├─ Automatic blocking of brute-force attacks
-└─ Incident response triggering
-```
-
-#### Corrective Controls
-```
-Vulnerability Patching: "Deploy patches within 48 hours of release"
-├─ Fixes known exploits
-├─ Reduces vulnerability window
-└─ Prevents widespread compromise
-
-Malware Removal: "Antivirus engine scans on upload and execution"
-├─ Detects malicious files
-├─ Quarantines infected content
-└─ Prevents malware spread
-```
+> 💡 In practice, modern protocols combine both: asymmetric encryption exchanges a symmetric session key, which then encrypts actual data. This is the foundation of **TLS/HTTPS**.
 
 ---
 
-### **D. PHYSICAL CONTROLS**
+## 4. Practical Encryption with CyberChef (AES)
 
-#### Preventive Controls
-```
-Server Room Lock: "Secure door with badge access"
-├─ Restricts unauthorized entry
-├─ Prevents theft of physical servers
-└─ Protects power/cooling infrastructure
+### Parameters Used
 
-Environmental Controls: "Temperature/humidity monitoring"
-├─ Prevents hardware failure
-├─ Maintains optimal operating conditions
-└─ Avoids downtime
+| Parameter | Value |
+|---|---|
+| Tool | CyberChef |
+| Operation | AES Encrypt |
+| Mode | CBC (Cipher Block Chaining) |
+| Key | `gomycodegomycode` (16-byte UTF-8) |
+| Input Message | `Security is not a product, but a process.` |
+| Output Format | Base64 encoded ciphertext |
 
-Badging System: "RFID badge + PIN for multi-factor access"
-├─ Dual authentication required
-├─ Non-transferable credential
-└─ Audit trail of entries
-```
+### Steps Performed
 
-#### Detective Controls
-```
-CCTV Cameras: "24/7 video surveillance in server room"
-├─ Monitors physical access
-├─ Records suspicious activity
-├─ Enables forensic investigation
+1. Opened CyberChef and selected the **AES Encrypt** operation
+2. Entered the key `gomycodegomycode` and selected CBC mode
+3. Input the message and copied the Base64-encoded encrypted output
+4. Opened `index.html` in the XAMPP `htdocs` directory using VS Code
+5. Inserted my full name followed by the AES encrypted ciphertext
+6. Started Apache via the XAMPP Control Panel
+7. Navigated to `http://localhost` to verify the output
 
-Access Logs: "Automatic log of badge scans, timestamps, duration"
-├─ Identifies unauthorized access attempts
-├─ Detects after-hours access
-└─ Creates accountability
-```
+### Screenshots
 
-#### Corrective Controls
-```
-Disaster Recovery: "Off-site backup facility with failover capability"
-├─ Restores operations after physical damage
-├─ Maintains business continuity
-└─ Recovers data from backups
-```
+| Step | Screenshot |
+|---|---|
+| AES encryption in CyberChef | ![AES Encrypt](screenshots/AESEntrypt.png) |
+| Editing index.html in VS Code | ![VS Code Edit](screenshots/vscodeedit.png) |
+| Inserting encrypted text into HTML | ![Edit HTML](screenshots/edithtmlputencryptedtext.png) |
+| Saving the HTML file | ![Save HTML](screenshots/edithtmlsaveimage.png) |
+| Testing on localhost | ![Test Localhost](screenshots/testlocalhost.png) |
+| Final page after edit | ![Final Page](screenshots/testlocalhostafteredit.png) |
 
 ---
 
-## Summary Table
+## 5. What is Steganography?
 
-| Category | Preventive | Detective | Corrective |
-|----------|-----------|-----------|-----------|
-| **Managerial** | Security policy | Access review | Incident response |
-| **Operational** | Staff training | Configuration audit | Patch management |
-| **Technical** | Firewall rules | Logging/IDS | Vulnerability patching |
-| **Physical** | Server room lock | CCTV cameras | Disaster recovery |
+**Steganography** is the practice of concealing secret information within an ordinary, non-secret file so that the very existence of the hidden data is not apparent to observers.
 
----
+> From Greek: *steganos* (covered) + *graphein* (writing)
 
-# 2. CIA TRIAD & AAA FRAMEWORK
+### Steganography vs. Encryption
 
-## CIA Triad - Confidentiality, Integrity, Availability
+| Aspect | Steganography | Encryption |
+|---|---|---|
+| **Goal** | Hide the *existence* of the message | Protect the *content* of the message |
+| **Visibility** | The carrier file appears completely normal | Ciphertext is visible but unreadable |
+| **Detection** | Hard to detect without forensic tools (steganalysis) | Anyone can see that data is encrypted |
+| **Key Required?** | Optional passphrase to extract data | Always requires a key |
+| **Common Media** | Images (JPEG, PNG), Audio (MP3), Video | Any data type |
 
-### **1. Confidentiality**
+### Use Cases
 
-**Definition:** Only authorized users can access/read data. Unauthorized people cannot view sensitive information.
+- **🔴 Attacker:** A malware author embeds a C2 server IP address inside an innocent JPEG posted on a public website. The malware downloads the image and extracts the hidden IP to receive commands — bypassing network-based detection.
 
-**Real-World Example: Bank Account Password**
-```
-Scenario: Your bank account balance is sensitive data
-
-Confidentiality Broken:
-❌ Employee reads customer account details
-❌ Hacker intercepts password in plain text
-❌ Data breach exposes customer SSN
-
-Confidentiality Protected:
-✅ Password encrypted with SHA-256
-✅ Account details visible only to account owner
-✅ HTTPS encrypts data in transit
-✅ Only authenticated users see balances
-
-Protection Methods:
-├─ Encryption (AES-256, TLS)
-├─ Access controls (RBAC, password protection)
-├─ Data classification (public, confidential, secret)
-└─ NDAs (non-disclosure agreements)
-```
+- **🟢 Defender:** A forensics investigator uses steganalysis tools to find hidden data in seized images. Organizations embed invisible watermarks in proprietary documents to track leaks and identify the source.
 
 ---
 
-### **2. Integrity**
+## 6. Hide a Secret Using Steghide (Kali Linux)
 
-**Definition:** Data cannot be modified by unauthorized users. Data remains accurate and unchanged.
+### Installation
 
-**Real-World Example: Bank Transfer Amount**
-```
-Scenario: You transfer $100 to a friend
-
-Integrity Broken:
-❌ Attacker intercepts transfer, changes $100 → $1,000
-❌ Database hacked, balance modified
-❌ Receipt forged to show wrong amount
-❌ Transfer amount changed mid-transmission
-
-Integrity Protected:
-✅ Transfer amount verified with digital signature
-✅ Database uses checksums to detect changes
-✅ Receipt cryptographically signed
-✅ TLS ensures no man-in-the-middle modification
-
-Protection Methods:
-├─ Hashing (SHA-256, MD5)
-├─ Digital signatures (RSA signature)
-├─ Message authentication codes (HMAC)
-├─ Access controls (only authorized users modify)
-└─ Audit logs (record all changes)
-```
-
----
-
-### **3. Availability**
-
-**Definition:** Data/services accessible when needed. Not blocked, not slow, not offline.
-
-**Real-World Example: ATM Machine**
-```
-Scenario: You need to withdraw cash at 3 AM
-
-Availability Broken:
-❌ ATM offline for maintenance
-❌ Network connection down
-❌ Server overloaded, taking 10 minutes per request
-❌ DDoS attack floods server with requests
-
-Availability Protected:
-✅ ATM operational 24/7/365
-✅ Redundant network connections (primary + backup)
-✅ Load balanced servers (distribute traffic)
-✅ DDoS protection (rate limiting, filtering)
-
-Protection Methods:
-├─ Redundancy (backup systems)
-├─ Backups (data recovery)
-├─ Load balancing (distribute load)
-├─ Disaster recovery (rapid restoration)
-└─ DDoS protection (block attack traffic)
-```
-
----
-
-## AAA Framework - Authentication, Authorization, Accounting
-
-### **1. Authentication**
-
-**Definition:** Prove you are who you claim to be. Verify identity.
-
-**Methods:**
-```
-Something You KNOW:
-├─ Password: "MyPassword123"
-├─ PIN: "1234"
-└─ Security question: "What is your pet's name?"
-
-Something You HAVE:
-├─ Security token: Hardware or software token
-├─ Badge: Physical identification card
-├─ Phone: SMS code or authenticator app
-└─ Certificate: Digital certificate
-
-Something You ARE:
-├─ Fingerprint: Biometric scan
-├─ Face: Facial recognition
-├─ Iris: Eye scan
-└─ Voice: Voice recognition
-
-Multi-Factor Authentication (MFA):
-✅ Password (something you know)
-  + SMS code (something you have)
-  = Secure authentication
-```
-
----
-
-### **2. Authorization**
-
-**Definition:** Determine what authenticated user can do. What resources can they access?
-
----
-
-### **3. Accounting**
-
-**Definition:** Track and record who did what and when. Create audit trail.
-
----
-
-# 3. ENCRYPTION TYPES: SYMMETRIC VS ASYMMETRIC
-
-## Symmetric Encryption (AES)
-
-### How It Works
-```
-Alice and Bob share same key: "MySecurePassword"
-
-Alice encrypts message:
-    Plain text: "Attack at dawn"
-    + Key: "MySecurePassword"
-    = Encrypted: "LKJH&*@#$%^&*()"
-
-Alice sends: "LKJH&*@#$%^&*()"
-
-Bob decrypts message:
-    Encrypted: "LKJH&*@#$%^&*()"
-    + Key: "MySecurePassword"
-    = Plain text: "Attack at dawn"
-```
-
----
-
-## Asymmetric Encryption (RSA)
-
-### How It Works
-```
-Bob has TWO keys:
-    Public Key: Available to EVERYONE
-    Private Key: Only Bob has
-
-Alice encrypts with Bob's PUBLIC key:
-    Plain text: "Secret message"
-    + Bob's PUBLIC key
-    = Encrypted: "LKJH&*@#$%^&*()"
-
-Only Bob can decrypt with his PRIVATE key:
-    Encrypted: "LKJH&*@#$%^&*()"
-    + Bob's PRIVATE key
-    = Plain text: "Secret message"
-```
-
----
-
-## Symmetric vs Asymmetric Comparison
-
-| Feature | Symmetric (AES) | Asymmetric (RSA) |
-|---------|-----------------|------------------|
-| **Keys** | One shared key | Public + Private |
-| **Key Size** | 128-256 bits | 2048-4096 bits |
-| **Speed** | ⚡ Fast | 🐢 Slow |
-| **Key Distribution** | ❌ Problem | ✅ No problem |
-| **Use Cases** | File encryption, disk | Email, HTTPS, signatures |
-| **Example** | AES | RSA, ECC |
-
----
-
-# 4. PRACTICAL IMPLEMENTATION WITH SCREENSHOTS
-
-## Step 1: CyberChef AES Encryption
-
-### Screenshot 1: CyberChef Interface
-![CyberChef AES Encryption](./screenshots/AES_Encrypt.png)
-
-**What's Shown:**
-- Operations panel (left) with AES options
-- Recipe area (middle) with AES Encrypt selected
-- Input area (top right) with message: "cybersecurity test"
-- Key field: "MySecurePassword" (UTF8)
-- IV field: "000000000000..." (HEX)
-- Mode: CBC
-- Output area (bottom right) showing encrypted result
-
-**Configuration:**
-```
-Input Message: cybersecurity test
-Key: MySecurePassword
-Key Format: UTF8
-IV: HEX format
-Mode: CBC
-Input Format: Hex
-Output Format: Hex
-
-Result: d27fc4544aebf5363126203991f97f16
-```
-
----
-
-## Step 2: Directory Structure on Kali Linux
-
-### Screenshot 2: Files on Desktop
-![Desktop Directory with Files](./screenshots/Directoryimage.png)
-
-**What's Shown:**
-- Directory listing showing:
-  - `my.txt` - Contains the secret message "nourhen"
-  - `photo.jpeg` - Image file for steganography
-
-**Purpose:**
-These files will be used for steganographic embedding
-
----
-
-## Step 3: Steghide Installation on Kali
-
-### Screenshot 3: Steghide Installation Process
-![Steghide Installation](./screenshots/instalteghide.png)
-
-**Command Executed:**
 ```bash
-steghide --version
-# Output: Command not found
-
-sudo apt install steghide -y
-# Installing steghide with dependencies...
-# libmcrypt4, libmhash2
+steghide --version        # Check if installed
+sudo apt install steghide # Install if not present
 ```
 
-**Status:** ✅ Installation successful
+### Embedding Process
 
----
-
-## Step 4: Steghide Embedding Secret Message
-
-### Screenshot 4: Embedding "nourhen" in Image
-![Steghide Embed Command](./screenshots/hidewordinphoto.png)
-
-**Command:**
 ```bash
-steghide embed -ef my.txt -cf photo.jpeg
-# Enter passphrase: (optional)
-# Re-enter passphrase:
-# embedding "my.txt" in "photo.jpeg" ... done
+# Create the secret file
+echo "gomycode" > my.txt
+
+# Embed it inside the image
+steghide embed -ef my.txt -cf index.jpeg
+# Enter passphrase when prompted
 ```
 
-**Result:**
-- Secret message "nourhen" is now hidden in photo.jpeg
-- Image appears unchanged to the naked eye
-- Only extractable with steghide + correct passphrase
+### Extraction (Reverse Operation)
 
----
-
-## Step 5: Steghide Extraction & Verification
-
-### Screenshot 5: Extracting Hidden Message
-![Steghide Extract](./screenshots/extractpass.png)
-
-**Command:**
 ```bash
-steghide extract -sf photo.jpeg -xf extracted.txt
-# Enter passphrase:
-# wrote extracted data to "extracted.txt".
-
-cat extracted.txt
-# Output: nourhen ✅
+steghide extract -sf index.jpeg
+# Enter the same passphrase to retrieve hidden data
 ```
 
-**Verification:**
-- Hidden message successfully extracted
-- Proves steganography working correctly
-- Only possible with correct passphrase
+### Screenshots
+
+| Step | Screenshot |
+|---|---|
+| Installing Steghide | ![Install Steghide](screenshots/instalteghide.png) |
+| Hiding word in image | ![Hide Word](screenshots/hidewordinphoto.png) |
+| Extracting hidden data | ![Extract](screenshots/extractpass.png) |
 
 ---
 
-## Step 6: XAMPP Web Server Setup
+## 7. Serve the Steganographic Image via XAMPP
 
-### Screenshot 6: XAMPP Control Panel - Apache Running
-![XAMPP Running](./screenshots/Runningxampp.png)
+### Steps
 
-**Server Status:**
-```
-MySQL Database:    Stopped (red)
-ProFTPD:           Running (green)
-Apache Web Server: Running (green) ✅
-```
+| Step | Action | Screenshot |
+|---|---|---|
+| 1 | Start XAMPP and activate Apache | ![XAMPP Running](screenshots/Runningxampp.png) |
+| 2 | Open the htdocs directory | ![Open htdocs](screenshots/openhtdocs.png) |
+| 3 | Copy the steganographic image to htdocs | ![Save Image](screenshots/saveimageashtdocs.png) |
+| 4 | Get Kali Linux IP for file transfer | ![Kali IP](screenshots/openkaliip.png) |
+| 5 | Edit index.html: name + encrypted text + image tag | ![Edit HTML](screenshots/edithtmlputencryptedtext.png) |
+| 6 | Verify server is running | ![Open Server](screenshots/openserver.png) |
+| 7 | Open localhost in browser | ![Open Localhost](screenshots/openlocalhostafterajoutimage.png) |
+| 8 | Confirm final rendered page | ![Final Page](screenshots/testlocalhostafteredit.png) |
+| 9 | Secure file confirmation | ![Secure File](screenshots/securitefile.png) |
 
-**Configuration:**
-- Apache Web Server: RUNNING
-- Port: 80 (HTTP)
-- Document Root: /Applications/XAMPP/xamppfiles/htdocs/
+### Final index.html Structure
 
----
-
-## Step 7: XAMPP htdocs Directory Contents
-
-### Screenshot 7: Files in Web Server Directory
-![htdocs Folder Contents](./screenshots/openhtdocs.png)
-
-**Files Present:**
-```
-applications.html    - XAMPP landing page
-bitnami.css         - Styling
-dashboard/          - Admin dashboard folder
-favicon.ico         - Website icon
-img/                - Image folder
-index.html          - ✅ Our main page
-index.php           - PHP script
-webalizer/          - Web stats folder
-photo.jpeg          - ✅ Steganographic image
-```
-
----
-
-## Step 8: HTML File with Encrypted Message
-
-### Screenshot 8: Editing index.html in VS Code
-![HTML Editing](./screenshots/edithtmlputencryptedtext.png)
-
-**Code Visible:**
 ```html
-<h1>Nourhen Riahi</h1>
-<h2>AES Encrypted Message</h2>
-<p>d27fc4544aebf5363126203991f97f16</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkpoint 2 - Nour Henriahi</title>
+</head>
+<body>
+  <h1>Nour Henriahi</h1>
+
+  <!-- AES Encrypted Message (CyberChef - CBC mode, key: gomycodegomycode) -->
+  <p><strong>Encrypted Message:</strong> U2FsdGVkX1+... (Base64 AES ciphertext)</p>
+
+  <!-- Steganographic Image (contains hidden word: gomycode) -->
+  <img src="index.jpeg" alt="Steganographic Image" />
+</body>
+</html>
 ```
 
-**What's Being Done:**
-- Adding student name
-- Embedding encrypted message
-- Ready for web display
+### What the Page Demonstrates
+
+The final page at `http://localhost` contains three elements that combine all lab concepts:
+
+- ✅ **Name** — Student identification
+- ✅ **AES Encrypted Text** — Data confidentiality via symmetric encryption
+- ✅ **Steganographic Image** — Hidden data inside a normal-looking image
+
+> An observer visiting the page sees a name, some text, and an image — with no indication that the image hides a secret or that the visible text is encrypted ciphertext.
 
 ---
 
-## Step 9: Initial Localhost Test
+## 🧠 Conclusion
 
-### Screenshot 9: Localhost Page - Before Image
-![Initial Localhost](./screenshots/testlocalhostafteredit.png)
+This checkpoint demonstrated practical application of core cybersecurity principles:
 
-**Display:**
-```
-Nourhen Riahi
-
-AES Encrypted Message
-d27fc4544aebf5363126203991f97f16
-```
-
-**Status:**
-- ✅ Apache serving page
-- ✅ Encrypted message displays
-- ✅ HTML rendering correctly
+| Concept | Tool / Method |
+|---|---|
+| Access Control | Managerial, Operational, Technical, Physical controls |
+| CIA Triad | Confidentiality, Integrity, Availability with real examples |
+| Encryption Theory | Symmetric (AES) vs Asymmetric (RSA) |
+| Practical Encryption | CyberChef — AES CBC encryption |
+| Steganography | Steghide on Kali Linux — embed & extract |
+| Web Deployment | XAMPP / Apache — serving the final page |
 
 ---
 
-## Step 10: Final Localhost with Steganographic Image
-
-### Screenshot 11 (FINAL): Complete Page with Hidden Image
-![Final Localhost with Image](./screenshots/openlocalhostafterajoutimage.png)
-
-**Complete Display:**
-```
-Nourhen Riahi
-
-AES Encrypted Message
-d27fc4544aebf5363126203991f97f16
-
-Steganography Image
-[Photo with security lock icon displayed]
-```
-
-**What's Demonstrated:**
-- ✅ Student name displayed
-- ✅ AES encrypted message visible (unreadable without key)
-- ✅ Steganographic image served from XAMPP
-- ✅ Image contains hidden "nourhen" message
-- ✅ All practical security concepts working together
-
----
-
-# 5. SCREENSHOTS & EVIDENCE
-
-## Complete Lab Screenshot Inventory
-
-| # | File Name | Description | Demonstrates |
-|---|-----------|-------------|---------------|
-| 1 | AES_Encrypt.png | CyberChef encryption interface | Symmetric encryption (AES) |
-| 2 | Directoryimage.png | my.txt and photo.jpeg files | Steganography preparation |
-| 3 | instalteghide.png | Steghide installation process | Tool setup |
-| 4 | hidewordinphoto.png | Steghide embed command | Steganography embedding |
-| 5 | extractpass.png | Steghide extract verification | Steganography extraction |
-| 6 | Runningxampp.png | XAMPP Apache running | Web server operational |
-| 7 | openhtdocs.png | htdocs folder with files | Web files organized |
-| 8 | edithtmlputencryptedtext.png | HTML editing in VS Code | Integration of encryption |
-| 9 | testlocalhostafteredit.png | Localhost with encrypted msg | Web display verification |
-| 10 | testlocalhost.png | Initial page test | Server connectivity |
-| 11 | openlocalhostafterajoutimage.png | Final page with image | Complete integration |
-| 12 | securitfile.png | Documentation | Lab completion |
-
----
-
-## Visual Evidence Summary
-
-### Security Implementation Layers
-
-```
-Layer 1: Data Encryption (Screenshot 1)
-└─ CyberChef AES-256
-   Input: "cybersecurity test"
-   Output: "d27fc4544aebf5363126203991f97f16"
-
-Layer 2: Data Hiding (Screenshots 3-5)
-└─ Steghide Steganography
-   Hidden message: "nourhen"
-   Container: photo.jpeg
-   Status: ✅ Verified via extraction
-
-Layer 3: Web Delivery (Screenshots 6-11)
-└─ XAMPP Apache Server
-   Port: 80 (HTTP)
-   Files: index.html, photo.jpeg
-   Display: Both encrypted message and image
-
-Result: Complete security chain demonstrated
-```
-
----
-
-# 6. LEARNING OUTCOMES
-
-## Technical Skills Demonstrated
-
-✅ **Security Control Implementation**
-- Understand 4 control categories (Managerial, Operational, Technical, Physical)
-- Classify controls as Preventive, Detective, or Corrective
-- Apply defense-in-depth principle
-
-✅ **CIA Triad Application**
-- Confidentiality: Encryption protects data visibility
-- Integrity: Checksums/hashes detect unauthorized changes
-- Availability: Redundancy and backups ensure accessibility
-
-✅ **AAA Framework Implementation**
-- Authentication: Verify user identity with credentials
-- Authorization: Control what users can access based on roles
-- Accounting: Log all actions for audit trail
-
-✅ **Encryption Techniques**
-- Symmetric encryption (AES): Fast, shared key
-- Asymmetric encryption (RSA): Secure key exchange, digital signatures
-- Hybrid approach: Combine both for optimal security
-
-✅ **Steganography**
-- Hide data in images using Steghide
-- Understand difference from encryption
-- Practical application in security
-
-✅ **Web Server Configuration**
-- XAMPP setup and management
-- HTML integration of security concepts
-- Local testing and verification
-
----
-
-## Key Concepts Mastered
-
-```
-┌─ Security Controls
-│  ├─ Preventive (stop before happening)
-│  ├─ Detective (discover after happening)
-│  └─ Corrective (fix after discovery)
-│
-├─ CIA Triad
-│  ├─ Confidentiality (encryption)
-│  ├─ Integrity (hashing, signatures)
-│  └─ Availability (redundancy, backups)
-│
-├─ AAA Framework
-│  ├─ Authentication (prove who you are)
-│  ├─ Authorization (what you can do)
-│  └─ Accounting (what you did, when, where)
-│
-├─ Encryption
-│  ├─ Symmetric (AES - fast, shared key)
-│  ├─ Asymmetric (RSA - secure, key exchange)
-│  └─ Hybrid (combine for best security)
-│
-└─ Steganography
-   ├─ Hide message in innocent-looking files
-   ├─ Difference from encryption
-   └─ Defender and attacker use cases
-```
-
----
-
-## Exam Preparation
-
-### Topics Covered (CompTIA Security+)
-```
-✅ Domain 1.0: General Security Concepts
-   ├─ CIA Triad
-   ├─ AAA Framework
-   ├─ Security Controls
-   └─ Defense in Depth
-
-✅ Domain 2.0: Threats, Vulnerabilities, Mitigations
-   ├─ Encryption as mitigation
-   ├─ Access controls
-   └─ Data protection strategies
-
-✅ Domain 3.0: Security Architecture
-   ├─ Firewalls and network controls
-   ├─ Access control lists (ACLs)
-   └─ Cryptographic systems
-```
-
----
-
-## Real-World Applications
-
-```
-Banking:
-├─ AES encryption for customer data
-├─ TLS for online banking
-├─ RBAC for employee access
-└─ Audit logs for compliance
-
-Healthcare (HIPAA):
-├─ Symmetric encryption for patient records
-├─ Access controls (doctors, nurses, administrators)
-├─ Audit trails for all access
-└─ Regular backups (availability)
-
-E-commerce:
-├─ HTTPS with RSA + AES hybrid
-├─ PCI compliance (encryption, access control)
-├─ Steganography for digital watermarks
-└─ WAF to block attacks
-
-Government:
-├─ Military-grade AES-256 encryption
-├─ Strict RBAC with clearance levels
-├─ Complete audit trails
-└─ Air-gapped networks for top secret
-```
-
----
-
-## Completion Checklist
-
-- [x] Security controls framework documented
-- [x] CIA triad explained with real-world examples
-- [x] AAA framework implemented
-- [x] Symmetric encryption (AES) demonstrated with screenshot
-- [x] Asymmetric encryption concepts explained
-- [x] Steganography with Steghide completed with screenshots
-- [x] Steghide installation documented
-- [x] Steghide extraction verified
-- [x] XAMPP web server running
-- [x] HTML file created with encrypted message
-- [x] Steganographic image served via HTTP
-- [x] Final page screenshot showing complete integration
-- [x] All 12 evidence screenshots included
-- [x] README documentation complete
-
----
-
-## Summary
-
-**Checkpoint 2: Complete ✅**
-
-**Date Completed:** May 19, 2026  
-**Total Time:** 4-5 hours  
-**Total Screenshots:** 12  
-**Lab Status:** Production-ready  
-
-**Key Deliverables:**
-- ✅ CyberChef AES encryption (d27fc4544aebf5363126203991f97f16)
-- ✅ Steghide steganography (hidden "nourhen" in photo.jpeg)
-- ✅ XAMPP web integration (localhost page with both elements)
-- ✅ Complete documentation with visual evidence (this README)
-- ✅ All screenshots embedded for reference
-
-**Next Checkpoint:** Threats, Vulnerabilities, and Mitigations (Domain 3.0)
-
----
-
-<div align="center">
-
-### 🎓 Building Security Skills One Checkpoint at a Time 🔐
-
-**CompTIA Security+ Progress: 2/6 Checkpoints Complete**
-
-**Certification Goal:** Achieve CompTIA Security+ (SY0-701)  
-**Career Path:** DevSecOps Engineer → Germany 🇩🇪
-
-</div>
-
----
-
-**Created By:** Nourhen Riahi  
-**Last Updated:** May 19, 2026  
-**Status:** ✅ Complete with Visual Evidence and Ready for GitHub
-
+*CompTIA Security+ Labs — Checkpoint 2 | Nour Henriahi*
