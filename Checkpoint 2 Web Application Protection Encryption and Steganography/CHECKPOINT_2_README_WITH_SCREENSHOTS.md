@@ -101,7 +101,7 @@ Imagine your web application is hosted in an on-premises server room. The follow
 
 | Step | Screenshot |
 |---|---|
-| AES encryption in CyberChef | ![AES Encrypt](screenshots/AESEntrypt.png) |
+| AES encryption in CyberChef | ![AES Encrypt](screenshots/AESEncrypt.png) |
 | Editing index.html in VS Code | ![VS Code Edit](screenshots/vscodeedit.png) |
 | Inserting encrypted text into HTML | ![Edit HTML](screenshots/edithtmlputencryptedtext.png) |
 | Saving the HTML file | ![Save HTML](screenshots/edithtmlsaveimage.png) |
