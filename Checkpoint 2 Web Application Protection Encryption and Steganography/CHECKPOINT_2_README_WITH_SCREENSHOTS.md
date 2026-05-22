@@ -2,7 +2,7 @@
 
 > **CompTIA Security+ Lab** | Kali Linux VM + Windows Host (XAMPP)  
 > **Student:** Nour Henriahi
-
+ 
 ---
 
 ## 📋 Table of Contents
