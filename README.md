@@ -66,7 +66,7 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 
 **Tools:** CyberChef, Steghide, Linux CLI
 
-📂 **[Open Checkpoint 2 →](./02-general-security-concepts/)** (Coming Soon)
+📂 **[Open Checkpoint 2 →](/CHECKPOINT_2_README_WITH_SCREENSHOTS.md)**
 
 ---
 
