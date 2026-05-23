@@ -534,7 +534,7 @@ Educational material for CompTIA Security+ learning and skill development.
 - ✅ Learning outcomes and security insights
 
 ### **Upcoming**
-- 🔄 Checkpoint 2: General Security Concepts
+
 - 🔄 Checkpoint 3: Threats & Vulnerabilities
 - 🔄 Checkpoint 4: Security Architecture
 - 🔄 Checkpoint 5: Security Operations
