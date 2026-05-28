@@ -1,13 +1,7 @@
-# 🔐 Checkpoint 2: Web Application Protection, Encryption, and Steganography
+
 
 **CompTIA Security+ Checkpoint 2 - Complete Lab Documentation with All Screenshots**
 
-**Student:** Nourhen Riahi  
-**Date:** May 19, 2026  
-**Status:** ✅ COMPLETE  
-**Total Screenshots:** 17  
-**Total Time:** 4-5 hours  
-**Difficulty Level:** Intermediate
 
 ---
 
@@ -351,7 +345,7 @@ Important: Alice CANNOT decrypt (she doesn't have Bob's private key!)
 
 **Website:** https://gchq.github.io/CyberChef/
 
-**Screenshot 1:** AES_Entrypt.png
+**Screenshot 1:** 
 ![CyberChef Interface](./screenshots/AESEncrypt.png)
 
 **What's Shown:**
@@ -396,7 +390,7 @@ Result:          d27fc4544aebf5363126203991f97f16
 
 ### Step 3: Prepare Files on Kali Desktop
 
-**Screenshot 2:** Directoryimage.png
+**Screenshot 2:** 
 ![Desktop Directory Listing](./screenshots/Directoryimage.png)
 
 **Files Created:**
@@ -414,7 +408,7 @@ Result:          d27fc4544aebf5363126203991f97f16
 
 ### Step 4: Install Steghide on Kali Linux
 
-**Screenshot 3:** instalteghide.png
+**Screenshot 3:** 
 ![Steghide Installation](./screenshots/instalteghide.png)
 
 **Commands:**
@@ -439,7 +433,7 @@ sudo apt install steghide -y
 
 ### Step 5: Embed Secret Message in Image
 
-**Screenshot 4:** hidewordinphoto.png
+**Screenshot 4:** 
 ![Steghide Embedding](./screenshots/hidewordinphoto.png)
 
 **Command:**
@@ -464,7 +458,7 @@ steghide embed -ef my.txt -cf photo.jpeg
 
 ### Step 6: Extract and Verify Hidden Message
 
-**Screenshot 5:** extractpass.png
+**Screenshot 5:** 
 ![Steghide Extraction](./screenshots/extractpass.png)
 
 **Command:**
@@ -492,7 +486,7 @@ cat extracted.txt
 
 ### Step 7: Start XAMPP Apache Server
 
-**Screenshot 6:** Runningxampp.png
+**Screenshot 6:** 
 ![XAMPP Control Panel](./screenshots/Runningxampp.png)
 
 **Server Status:**
@@ -516,7 +510,7 @@ Apache Web Server: Running (🟢 green) ✅
 
 ### Step 8: Verify htdocs Directory
 
-**Screenshot 7:** openhtdocs.png
+**Screenshot 7:** 
 ![htdocs Folder Contents](./screenshots/openhtdocs.png)
 
 **Directory Structure:**
@@ -540,7 +534,7 @@ Apache Web Server: Running (🟢 green) ✅
 
 ### Step 9: Create index.html with Encrypted Message
 
-**Screenshot 8:** edithtmlputencryptedtext.png
+**Screenshot 8:** 
 ![Editing HTML in VS Code](./screenshots/edithtmlputencryptedtext.png)
 
 **Code Structure:**
@@ -570,7 +564,7 @@ Apache Web Server: Running (🟢 green) ✅
 
 ### Step 10: Add Steganographic Image Reference
 
-**Screenshot 9:** edithtmlsaveimage.png
+**Screenshot 9:**
 ![HTML with Image Tag](./screenshots/edithtmlsaveimage.png)
 
 **Updated Code:**
@@ -587,7 +581,7 @@ Apache Web Server: Running (🟢 green) ✅
 
 ### Step 11: Test Page Initially
 
-**Screenshot 11:** testlocalhost.png
+**Screenshot 11:** 
 ![Initial Localhost Test](./screenshots/testlocalhost.png)
 
 **URL:** http://localhost or http://127.0.0.1
@@ -610,7 +604,7 @@ d27fc4544aebf5363126203991f97f16
 
 ### Step 12: Open HTTP Server on Kali Linux
 
-**Screenshot 12:** openserver.png
+**Screenshot 12:** 
 ![Python HTTP Server](./screenshots/openserver.png)
 
 **Command (in Kali Terminal):**
@@ -634,7 +628,7 @@ python3 -m http.server 8000
 
 ### Step 13: Find Kali Linux IP Address
 
-**Screenshot 13:** openkaliip.png
+**Screenshot 13:** 
 ![Kali IP Address](./screenshots/openkaliip.png)
 
 **Command (in new Kali Terminal):**
@@ -690,7 +684,7 @@ or chosen location
 
 ### Step 16: Move Image to XAMPP htdocs
 
-**Screenshot 14:** saveimageashtdocs.png
+**Screenshot 14:** 
 ![Save Image to htdocs](./screenshots/saveimageashtdocs.png)
 
 **On Mac Finder:**
@@ -712,7 +706,7 @@ ls -la /Applications/XAMPP/xamppfiles/htdocs/photo.jpeg
 
 ### Step 17: Final Verification - Complete Page
 
-**Screenshot 15:** openlocalhostafterajoutimage.png
+**Screenshot 15:** 
 ![Final Localhost Page](./screenshots/openlocalhostafterajoutimage.png)
 
 **URL:** http://localhost
@@ -737,7 +731,7 @@ Caption: This image contains hidden message: "nourhen"
 
 ### Step 18: VS Code Final View
 
-**Screenshot 16:** vscodeedit.png
+**Screenshot 16:** 
 ![Final HTML in VS Code](./screenshots/vscodeedit.png)
 
 **Complete HTML:**
@@ -766,7 +760,7 @@ Caption: This image contains hidden message: "nourhen"
 
 ### Step 19: Updated localhost After Edit
 
-**Screenshot 17:** testlocalhostafteredit.png
+**Screenshot 17:** 
 ![Localhost After Updates](./screenshots/testlocalhostafteredit.png)
 
 **Display:**
@@ -784,8 +778,8 @@ Steganography Image
 
 ### Documentation Summary
 
-**Screenshot 20:** securitfile.png
-![Security Documentation](./screenshots/securitfile.png)
+**Screenshot 20:** 
+![Security Documentation](./screenshots/securitefile.png)
 
 Lab completion summary and key findings documented.
 
@@ -817,34 +811,6 @@ Lab completion summary and key findings documented.
 
 ---
 
-## Screenshot Organization for GitHub
-
-**Recommended Folder Structure:**
-```
-02-web-application-security/
-├── screenshots/
-│   ├── 01_AES_Entrypt.png
-│   ├── 02_Directoryimage.png
-│   ├── 03_instalteghide.png
-│   ├── 04_hidewordinphoto.png
-│   ├── 05_extractpass.png
-│   ├── 06_Runningxampp.png
-│   ├── 07_openhtdocs.png
-│   ├── 08_edithtmlputencryptedtext.png
-│   ├── 09_edithtmlsaveimage.png
-│   ├── 10_testlocalhost.png
-│   ├── 11_testlocalhostafteredit.png
-│   ├── 12_openserver.png
-│   ├── 13_openkaliip.png
-│   ├── 14_saveimageashtdocs.png
-│   ├── 15_openlocalhostafterajoutimage.png
-│   ├── 16_vscodeedit.png
-│   └── 17_securitfile.png
-├── README.md (Overview)
-└── CHECKPOINT_2_COMPLETE.md (This file)
-```
-
----
 
 # 6. LEARNING OUTCOMES
 
@@ -966,31 +932,6 @@ Networking:
 
 ---
 
-## Completion Checklist
-
-### Lab Tasks
-- [x] Security controls framework documented
-- [x] CIA Triad explained with real-world examples
-- [x] AAA Framework implemented and explained
-- [x] AES-256 symmetric encryption demonstrated
-- [x] RSA asymmetric encryption concepts covered
-- [x] Steghide steganography implementation complete
-- [x] XAMPP web server configured and running
-- [x] HTML page created with encrypted message
-- [x] Steganographic image integrated
-- [x] HTTP file transfer between systems accomplished
-- [x] Network communication demonstrated
-- [x] All 17 screenshots captured
-
-### Documentation
-- [x] Complete README with visual evidence
-- [x] All screenshots embedded
-- [x] Step-by-step procedures documented
-- [x] Key concepts explained
-- [x] Learning outcomes listed
-- [x] GitHub-ready structure prepared
-
----
 
 ## Summary Statistics
 
@@ -998,8 +939,6 @@ Networking:
 
 | Metric | Value |
 |--------|-------|
-| **Date Completed** | May 19, 2026 |
-| **Total Time** | 4-5 hours |
 | **Screenshots** | 17 total |
 | **Lab Phases** | 5 (Encryption, Steganography, Web Server, HTML, File Transfer) |
 | **Concepts Covered** | 12+ major security topics |
@@ -1044,79 +983,10 @@ Networking:
 - Attack vectors and surfaces
 - Social engineering techniques
 
-### Checkpoint 4: Security Architecture
-- Network design and segmentation
-- Firewall configuration
-- Access control lists (ACLs)
-- DMZ implementation
-
-### Checkpoint 5: Security Operations
-- Vulnerability scanning and management
-- Incident response procedures
-- Security monitoring and alerting
-- Compliance and auditing
-
-### Checkpoint 6: Security Program Management
-- Risk management frameworks
-- Compliance standards (GDPR, HIPAA, PCI-DSS)
-- Penetration testing methodology
-- Governance and policies
 
 ---
 
-<div align="center">
 
-## 🎓 Building Security Skills One Checkpoint at a Time 🔐
 
-**CompTIA Security+ Progress**
-```
-Checkpoint 1: ✅ COMPLETE (Networking - 36 screenshots)
-Checkpoint 2: ✅ COMPLETE (Web Security - 17 screenshots)
-Checkpoint 3: ⏳ NEXT (Threats & Vulnerabilities)
-Checkpoint 4: 📋 PLANNED (Security Architecture)
-Checkpoint 5: 📋 PLANNED (Security Operations)
-Checkpoint 6: 📋 PLANNED (Program Management)
-```
 
-**Career Development**
-```
-Current Skills: DevSecOps Fundamentals ✅
-Target Role: DevSecOps Engineer
-Target Location: Germany 🇩🇪
-Certification Goal: CompTIA Security+ (SY0-701)
-Timeline: 6 Checkpoints = 6 months
-```
 
-**GitHub Portfolio**
-```
-Repository: https://github.com/nourhenriahii/comptia-security-plus-labs
-Status: 🟢 Ready for Upload
-Visibility: Public (for recruiters/hiring managers)
-Impact: Professional portfolio demonstrating hands-on skills
-```
-
-</div>
-
----
-
-## Final Notes
-
-This checkpoint demonstrates:
-- **Theory:** Understanding of security principles and frameworks
-- **Practice:** Hands-on implementation of encryption and steganography
-- **Integration:** Multiple systems working together (Kali, XAMPP, HTML, HTTP)
-- **Communication:** File transfer and networking between different machines
-- **Documentation:** Complete lab documentation with visual evidence
-
-All skills are directly applicable to real-world DevSecOps and security engineering roles.
-
----
-
-**Created By:** Nourhen Riahi  
-**Completed:** May 19, 2026  
-**Total Screenshots:** 17  
-**Status:** ✅ COMPLETE AND READY FOR GITHUB  
-
-**Next Action:** Upload to GitHub with all screenshots and documentation
-
----
