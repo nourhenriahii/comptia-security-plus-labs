@@ -1,6 +1,5 @@
 
-
-**CompTIA Security+ Checkpoint 2 - Complete Lab Documentation with All Screenshots**
+# 🔐 Checkpoint 2: Web Application Protection, Encryption, and Steganography
 
 
 ---
