@@ -724,69 +724,11 @@ Caption: This image contains hidden message: "nourhen"
          embedded with Steghide
 ```
 
-**✅ Status: COMPLETE - All elements integrated!**
-
----
-
-### Step 18: VS Code Final View
-
-**Screenshot 16:** 
-![Final HTML in VS Code](./screenshots/vscodeedit.png)
-
-**Complete HTML:**
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkpoint 2 - Security Lab</title>
-</head>
-<body>
-    <h1>Nourhen Riahi</h1>
-    
-    <h2>AES Encrypted Message</h2>
-    <p>d27fc4544aebf5363126203991f97f16</p>
-    
-    <h2>Steganography Image</h2>
-    <img src="photo.jpeg" width="400" 
-         alt="Image with hidden message">
-    <p>This image contains hidden message: "nourhen"
-       embedded with Steghide</p>
-</body>
-</html>
-```
-
----
-
-### Step 19: Updated localhost After Edit
-
-**Screenshot 17:** 
-![Localhost After Updates](./screenshots/testlocalhostafteredit.png)
-
-**Display:**
-```
-Nourhen Riahi
-
-AES Encrypted Message
-d27fc4544aebf5363126203991f97f16
-
-Steganography Image
-[Image visible - security lock icon]
-```
-
----
-
-### Documentation Summary
-
-**Screenshot 20:** 
-![Security Documentation](./screenshots/securitefile.png)
-
-Lab completion summary and key findings documented.
-
 ---
 
 # 5. SCREENSHOT EVIDENCE MATRIX
 
-## Complete Screenshot Inventory (17 Total)
+## Complete Screenshot Inventory 
 
 | # | File Name | Phase | Description | Demonstrates | Status |
 |---|-----------|-------|-------------|---------------|--------|
@@ -805,8 +747,8 @@ Lab completion summary and key findings documented.
 | 13 | openkaliip.png | File Transfer | Kali IP address (ip a) | Network identification | ✅ |
 | 14 | saveimageashtdocs.png | File Transfer | Save image to htdocs | File management | ✅ |
 | 15 | openlocalhostafterajoutimage.png | Final | Complete page with image | Full integration | ✅ |
-| 16 | vscodeedit.png | HTML | Final HTML in VS Code | Code review | ✅ |
-| 17 | securitfile.png | Documentation | Lab completion summary | Documentation | ✅ |
+
+
 
 ---
 
@@ -938,7 +880,7 @@ Networking:
 
 | Metric | Value |
 |--------|-------|
-| **Screenshots** | 17 total |
+| **Screenshots** | 15 total |
 | **Lab Phases** | 5 (Encryption, Steganography, Web Server, HTML, File Transfer) |
 | **Concepts Covered** | 12+ major security topics |
 | **Tools Used** | 6 (CyberChef, Steghide, XAMPP, VS Code, Python, Terminal) |
