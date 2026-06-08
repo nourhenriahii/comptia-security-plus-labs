@@ -90,7 +90,7 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 
 **Tools:** Wireshark, tcpdump, Snort, SIEM tools
 
-📂 **[Open Checkpoint 3 →](./03-threats-vulnerabilities/)** (Coming Soon)
+📂 **[Open Checkpoint 3 →](03-threats-vulnerabilities/](https://github.com/nourhenriahii/comptia-security-plus-labs/blob/main/Checkpoint%203%20Threat%20Actors%20Malware%20Attacks%20%26%20Social%20Engineering/README.md)** 
 
 ---
 
