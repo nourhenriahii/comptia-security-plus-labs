@@ -12,8 +12,6 @@
 
 This repository contains **6 complete checkpoint labs** from the **CompTIA Security+ (SY0-601)** certification course, covering all six security domains with practical, hands-on exercises.
 
-**Current Status:** Checkpoint 1 Complete ✅ | Checkpoints 2-6 In Progress 🔄
-
 ---
 
 ## 📚 All Checkpoints
@@ -47,7 +45,7 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 ---
 
 ### 🔄 **Checkpoint 2: General Security Concepts**
-**Status:** In Progress 🔄
+**Status:**
 
 **Topics:**
 - Compare and Contrast Various Types of Security Controls
@@ -71,7 +69,7 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 ---
 
 ### 🔄 **Checkpoint 3: Threats, Vulnerabilities, and Mitigations**
-**Status:** Planned 📋
+**Status:** 
 
 **Topics:**
 - Compare and Contrast Common Threat Actors and Motivations
@@ -95,7 +93,7 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 ---
 
 ### 🔄 **Checkpoint 4: Security Architecture**
-**Status:** Planned 📋
+**Status:** 
 
 **Topics:**
 - Compare and Contrast Security Implications of Different Architecture Models
@@ -114,12 +112,12 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 
 **Tools:** UFW, iptables, Cisco Packet Tracer, Linux CLI
 
-📂 **[Open Checkpoint 4 →](./04-security-architecture/)** (Coming Soon)
+📂 **[Open Checkpoint 4 →](./04-security-architecture/)** 
 
 ---
 
 ### 🔄 **Checkpoint 5: Security Operations**
-**Status:** Planned 📋
+**Status:** 
 
 **Topics:**
 - Apply Common Security Techniques to Computing Resources
@@ -141,12 +139,12 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 
 **Tools:** Wazuh, Splunk, Metasploit, Nessus
 
-📂 **[Open Checkpoint 5 →](./05-security-operations/)** (Coming Soon)
+📂 **[Open Checkpoint 5 →](./05-security-operations/)**
 
 ---
 
 ### 🔄 **Checkpoint 6: Security Program Management and Oversight**
-**Status:** Planned 📋
+**Status:** 
 
 **Topics:**
 - Explain Elements of the Risk Management Process
@@ -168,7 +166,7 @@ This repository contains **6 complete checkpoint labs** from the **CompTIA Secur
 
 **Tools:** Metasploit, Burp Suite, OWASP ZAP, Nmap
 
-📂 **[Open Checkpoint 6 →](./06-security-program-management/)** (Coming Soon)
+📂 **[Open Checkpoint 6 →](./06-security-program-management/)** 
 
 ---
 
@@ -179,15 +177,15 @@ Start Here
     ↓
 Checkpoint 1: Networking & Virtualization (✅ Complete)
     ↓
-Checkpoint 2: General Security Concepts (🔄 In Progress)
+Checkpoint 2: General Security Concepts (✅ Complete)
     ↓
-Checkpoint 3: Threats & Vulnerabilities (📋 Planned)
+Checkpoint 3: Threats & Vulnerabilities ✅ Complete)
     ↓
-Checkpoint 4: Security Architecture (📋 Planned)
+Checkpoint 4: Security Architecture (✅ Complete)
     ↓
-Checkpoint 5: Security Operations (📋 Planned)
+Checkpoint 5: Security Operations (✅ Complete)
     ↓
-Checkpoint 6: Program Management & Pentesting (📋 Planned)
+Checkpoint 6: Program Management & Pentesting (✅ Complete)
     ↓
 CompTIA Security+ Certification Ready! 🏆
 ```
@@ -245,11 +243,11 @@ CompTIA Security+ Certification Ready! 🏆
 
 | Domain | Checkpoint | Progress |
 |---|---|---|
-| **1. General Security Concepts** | 1-2 | ✅ Checkpoint 1 Complete |
-| **2. Threats, Vulnerabilities, Mitigations** | 3 | 🔄 In Progress |
-| **3. Security Architecture** | 4 | 🔄 In Progress |
-| **4. Security Operations** | 5 | 🔄 In Progress |
-| **5. Security Program Management** | 6 | 🔄 In Progress |
+| **1. General Security Concepts** | 1-2 | ✅ Checkpoint+2 Complete |
+| **2. Threats, Vulnerabilities, Mitigations** | 3 | ✅ Complete |
+| **3. Security Architecture** | 4 | ✅ Complete |
+| **4. Security Operations** | 5 |✅ Complete |
+| **5. Security Program Management** | 6 | ✅ Complete |
 
 ---
 
@@ -367,26 +365,6 @@ comptia-security-plus-labs/
 
 ---
 
-## 🔒 Security Concepts Highlighted
-
-### **Checkpoint 1 Key Findings**
-
-**Network Exposure Risks:**
-```
-⚠️  Open Port 80 (HTTP)      → Unencrypted web traffic
-⚠️  Open Port 3306 (MySQL)   → Direct database access vulnerability
-⚠️  Service Version Exposure  → Attackers identify exploitable versions
-```
-
-**Defense Mechanisms:**
-```
-✅ Firewall Rules       → Restrict ports to needed services only
-✅ ICMP Filtering       → Prevent reconnaissance ping sweeps
-✅ Network Segmentation → Isolate critical infrastructure (DMZ)
-✅ Version Hiding       → Don't advertise service versions
-```
-
----
 
 ## 💻 System Requirements
 
@@ -425,20 +403,6 @@ ls -la
 ```
 
 ---
-
-## 📊 Progress Tracker
-
-| Checkpoint | Status | Completed | Evidence |
-|---|---|---|---|
-| **1. Networking** | ✅ Complete | 100% | 8+ screenshots |
-| **2. Security Concepts** | 🔄 In Progress | 40% | (Coming Soon) |
-| **3. Threats & Vulns** | 📋 Planned | 0% | (Coming Soon) |
-| **4. Architecture** | 📋 Planned | 0% | (Coming Soon) |
-| **5. Operations** | 📋 Planned | 0% | (Coming Soon) |
-| **6. Program Mgmt** | 📋 Planned | 0% | (Coming Soon) |
-
----
-
 ## 🎯 Career Development
 
 ### **Alignment with Certifications**
@@ -454,16 +418,9 @@ ls -la
 - Penetration Tester
 - DevSecOps Engineer
 
-### **Skill Levels**
-```
-Beginner    → Checkpoint 1 (Networking Basics)
-Intermediate → Checkpoints 2-4 (Security Fundamentals)
-Advanced    → Checkpoints 5-6 (Operations & Pentesting)
-```
-
 ---
 
-## 📞 About the Author
+## 📞 About Me
 
 **Nourhen Riahi**
 
@@ -472,29 +429,17 @@ Advanced    → Checkpoints 5-6 (Operations & Pentesting)
 - 📚 Foundations of IT for Cybersecurity
 
 **Skills:**
-- 💻 Fullstack Web Development (HTML/CSS/JavaScript/Angular/PHP)
+- 💻 software Web Development
 - 🔐 Cybersecurity & Penetration Testing
 - 🎨 UI/UX Design (Figma)
 - 🤖 Generative AI Applications
 - 🌍 Multilingual: Arabic · French · English · Deutsch (B1)
 
 **Location:** Tunis, Tunisia  
-**Goal:** DevSecOps Engineer in Germany 🇩🇪
 
 **Connect:**
 - GitHub: [@nourhenriahii](https://github.com/nourhenriahii)
 - LinkedIn: (Add your profile)
-
----
-
-## 📝 Contributing
-
-This is an **educational portfolio project**.
-
-To suggest improvements or report issues:
-1. Open an Issue
-2. Submit a Pull Request
-3. Contact via GitHub
 
 ---
 
@@ -521,25 +466,6 @@ Educational material for CompTIA Security+ learning and skill development.
 - [nmap Official](https://nmap.org)
 - [Wireshark Guide](https://www.wireshark.org)
 - [Cisco Packet Tracer](https://www.netacad.com)
-
----
-
-## 📋 Changelog
-
-### **May 15, 2026**
-- ✅ Checkpoint 1: Networking & Virtualization — Complete
-- ✅ 8+ detailed screenshots with annotations
-- ✅ Comprehensive Q&A for all tasks
-- ✅ Network analysis and findings documented
-- ✅ Learning outcomes and security insights
-
-### **Upcoming**
-
-- 🔄 Checkpoint 3: Threats & Vulnerabilities
-- 🔄 Checkpoint 4: Security Architecture
-- 🔄 Checkpoint 5: Security Operations
-- 🔄 Checkpoint 6: Program Management
-- 🔄 Home Lab: Multi-router network with DMZ
 
 ---
 
