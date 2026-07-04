@@ -157,7 +157,7 @@ Public-facing servers (web servers, mail servers, DNS servers) are placed in the
 sudo iptables -L
 ```
 
-📷 ![Initial iptables rules](./screenshots/01_iptables_initial_list.png)
+📷 ![Initial iptables rules](./screenshots/_iptables_initial_list.png)
 
 ### Step 2 — Test basic connectivity (from Windows host)
 
@@ -165,7 +165,7 @@ sudo iptables -L
 ping <Kali_IP>
 ```
 
-📷 ![Ping before blocking](./screenshots/02_ping_before_blocking.png)
+📷 ![Ping before blocking](./screenshots/_ping_before_blocking.png)
 
 Result: Ping succeeds — no rules are blocking ICMP traffic yet.
 
@@ -175,7 +175,7 @@ Result: Ping succeeds — no rules are blocking ICMP traffic yet.
 sudo iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 ```
 
-📷 ![Block ICMP command](./screenshots/03_block_icmp_command.png)
+📷 ![Block ICMP command](./screenshots/_block_icmp_command.png)
 
 ### Step 4 — Try pinging again from Windows
 
@@ -183,11 +183,11 @@ sudo iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 ping <Kali_IP>
 ```
 
-📷 ![Ping after blocking](./screenshots/04_ping_after_blocking.png)
+📷 ![Ping after blocking](./screenshots/_ping_after_blocking.png)
 
 Result: **Request times out** — the DROP rule silently discards incoming ICMP echo-requests, so Windows gets no reply.
 
-📷 ![iptables with ICMP rule listed](./screenshots/05_iptables_with_icmp_rule.png)
+📷 ![iptables with ICMP rule listed](./screenshots/_iptables_with_icmp_rule.png)
 
 ### Step 5 — Remove the ICMP block rule
 
@@ -195,9 +195,9 @@ Result: **Request times out** — the DROP rule silently discards incoming ICMP 
 sudo iptables -D INPUT -p icmp --icmp-type echo-request -j DROP
 ```
 
-📷 ![Delete ICMP rule](./screenshots/06_delete_icmp_rule.png)
+📷 ![Delete ICMP rule](./screenshots/_delete_icmp_rule.png)
 
-📷 ![Ping after deletion (restored)](./screenshots/07_ping_after_deletion.png)
+📷 ![Ping after deletion (restored)](./screenshots/_ping_after_deletion.png)
 
 Result: Ping works again — connectivity restored.
 
@@ -207,15 +207,15 @@ Result: Ping works again — connectivity restored.
 sudo iptables -A INPUT -s <Windows_IP> -j DROP
 ```
 
-📷 ![Block Windows IP](./screenshots/08_block_windows_ip.png)
+📷 ![Block Windows IP](./screenshots/_block_windows_ip.png)
 
 ### Step 7 — Try accessing Kali from Windows
 
-📷 ![All traffic blocked](./screenshots/09_all_traffic_blocked.png)
+📷 ![All traffic blocked](./screenshots/_all_traffic_blocked.png)
 
 Result: **All traffic** from that IP is blocked — not just ping, but any service (SSH, HTTP, etc.) attempted from the Windows host fails, since the rule drops every packet from that source IP regardless of protocol.
 
-📷 ![iptables with IP rule listed](./screenshots/10_iptables_with_ip_rule.png)
+📷 ![iptables with IP rule listed](./screenshots/_iptables_with_ip_rule.png)
 
 ### Step 8 — Remove the IP block rule
 
@@ -223,9 +223,9 @@ Result: **All traffic** from that IP is blocked — not just ping, but any servi
 sudo iptables -D INPUT -s <Windows_IP> -j DROP
 ```
 
-📷 ![Delete IP rule](./screenshots/11_delete_ip_rule.png)
+📷 ![Delete IP rule](./screenshots/_delete_ip_rule.png)
 
-📷 ![Access restored](./screenshots/12_access_restored.png)
+📷 ![Access restored](./screenshots/_access_restored.png)
 
 Result: Full connectivity restored between Windows and Kali.
 
